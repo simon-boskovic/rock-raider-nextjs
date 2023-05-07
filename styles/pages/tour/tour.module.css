@@ -1,0 +1,38 @@
+.c-tour-wrapper {
+  padding-top: 10rem;
+  margin: auto;
+  text-align: center;
+  max-width: 41rem;
+}
+
+@media (max-width: 768px) {
+  .c-tour-wrapper {
+    padding-top: 5rem;
+    margin: 0 1rem;
+  }
+}
+
+.c-tour-info {
+  margin-top: 1rem;
+}
+
+.c-tour-items {
+  margin-top: 1rem;
+}
+
+.c-tour-item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.c-tour-item {
+  margin-top: 0.8rem;
+}
+
+.c-tour-items-wrapper {
+  text-align: left;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(218, 218, 218);
+}

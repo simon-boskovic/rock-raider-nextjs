@@ -1,0 +1,58 @@
+.c-info-main-wrapper {
+  margin-top: 3rem !important;
+  margin-bottom: 1rem;
+}
+
+.c-info-follow-us,
+.c-info-downloads {
+  margin-top: 1rem;
+}
+
+.c-info-header {
+  margin-bottom: 0.5rem;
+}
+.c-info-date-reservation {
+  margin-bottom: 0.5rem;
+}
+
+.c-info-follow-us-images {
+  display: grid;
+  grid-gap: 0.8rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin: auto;
+  width: 6.6rem;
+}
+
+.c-info-follow-us-image {
+  display: block;
+  height: auto;
+  -webkit-transition: 0.4s cubic-bezier(0.17, 0.88, 0.5, 1.57);
+  -moz-transition: 0.4s cubic-bezier(0.17, 0.88, 0.5, 1.57);
+  -o-transition: 0.4s cubic-bezier(0.17, 0.88, 0.5, 1.57);
+  transition: 0.4s cubic-bezier(0.17, 0.88, 0.5, 1.57);
+}
+
+.c-info-follow-us-image:hover {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+@media (min-width: 1120px) {
+  .c-info-main-wrapper {
+    display: grid;
+    gap: 6.4rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    max-width: 96rem;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 1rem;
+  }
+
+  .c-info-follow-us,
+  .c-info-downloads {
+    margin-top: 0;
+  }
+}

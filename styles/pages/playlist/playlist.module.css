@@ -1,0 +1,10 @@
+.c-playlist-wrapper {
+  padding-top: 10rem;
+  margin: auto;
+  text-align: center;
+  max-width: 40rem;
+}
+
+.c-song-list {
+  margin-top: 2rem;
+}

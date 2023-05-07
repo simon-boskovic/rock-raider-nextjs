@@ -1,0 +1,7 @@
+# BEGIN HTTPS WEDOS
+RewriteEngine On 
+RewriteCond %{HTTPS} off 
+RewriteRule (.*) https://%{SERVER_NAME}/$1 [R=301,L] 
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+Header set Content-Security-Policy "upgrade-insecure-requests;"
+# END HTTPS WEDOS
