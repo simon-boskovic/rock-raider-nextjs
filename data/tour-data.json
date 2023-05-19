@@ -58,6 +58,13 @@
   ],
   "8": [],
   "9": [],
-  "10": [],
+  "10": [{
+    "date": "5.8.2023",
+    "day": "SO",
+    "place": "Trnava",
+    "description": "Pouťová zábava",
+    "hasVacation": false,
+    "link": "http://www.seznam.cz"
+  }],
   "11": []
 }
