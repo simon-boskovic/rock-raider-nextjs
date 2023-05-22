@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
+import "swiper/css/zoom";
 
 export default function ImageSwiper(props) {
   const { swiperImagePaths } = props;
@@ -28,15 +29,17 @@ export default function ImageSwiper(props) {
     >
       {swiperImagePaths.map((imagePath, index) => (
         <SwiperSlide key={index}>
-          <Image
-            loading="lazy"
-            className={styles["c-band-logo"]}
-            src={imagePath}
-            alt="Band Image"
-            width={1920}
-            height={800}
-            style={{ objectFit: "cover", objectPosition: "40% 75%" }}
-          />
+          <div className={styles["c-image-wrapper"]}>
+            <Image
+              loading="lazy"
+              className={styles["c-band-logo"]}
+              style={{ objectFit: "cover" }}
+              src={imagePath}
+              alt="Band Image"
+              fill
+            />
+          </div>
+
           <div className="swiper-lazy-preloader"></div>
         </SwiperSlide>
       ))}
