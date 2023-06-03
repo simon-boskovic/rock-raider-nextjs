@@ -31,7 +31,11 @@ export default function Info(props) {
         {/* <div>NO CONTENT YET</div> */}
       </div>
       <div className={styles["c-info-follow-us"]}>
-        <h3 className={styles["c-info-header"]} data-aos="fade-right">
+        <h3
+          className={styles["c-info-header"]}
+          data-aos="fade-right"
+          data-aos-offset="0"
+        >
           Sledujte nás
         </h3>
         <div className={styles["c-info-follow-us-images"]}>
@@ -39,6 +43,7 @@ export default function Info(props) {
             <a key={index} className={styles["c-info-follow-us-image"]}>
               <Image
                 data-aos="zoom-in"
+                data-aos-offset="-100"
                 onClick={() =>
                   window.open(
                     "https://www.facebook.com/rockraider.zlin",

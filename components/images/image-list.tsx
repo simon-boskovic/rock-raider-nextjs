@@ -1,6 +1,7 @@
 import FsLightbox from "fslightbox-react";
 import { useState } from "react";
 import styles from "@/styles/Home.module.css";
+import Image from "next/image";
 
 export default function ImageList(props) {
   const imageLinks = props.imageLinks;
@@ -12,13 +13,16 @@ export default function ImageList(props) {
       <ul className={styles["image-gallery"]}>
         {imageLinks?.map((imageSrc, index) => (
           <li key={index}>
-            <img
+            <Image
+              loading="lazy"
               data-aos="fade-right"
               onClick={() => {
                 setImageIndex(index);
                 setToggler(!toggler);
               }}
               src={imageSrc}
+              width={350}
+              height={200}
               alt="Image"
             />
           </li>

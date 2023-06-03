@@ -48,6 +48,7 @@ export default function BandMembers() {
           <div key={index} className={styles["c-group-members"]}>
             <div className={styles["c-group-member-image"]}>
               <Image
+                loading="lazy"
                 src={member.image}
                 height={150}
                 width={150}

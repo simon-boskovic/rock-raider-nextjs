@@ -43,7 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Script
           src="https://unpkg.com/aos@next/dist/aos.js"
           onLoad={() => {
-            window["AOS"].init();
+            window["AOS"].init({ offset: 0, once: true });
           }}
         />
       </Layout>
