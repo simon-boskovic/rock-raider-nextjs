@@ -10,24 +10,39 @@
     padding-top: 5rem;
     margin: 0 1rem;
   }
+  .c-tour-month {
+    margin: 0rem !important;
+  }
+
+  .c-tour-item-wrapper {
+    padding: 0.3rem 0rem !important;
+  }
+}
+
+.c-tour-month {
+  margin: 0 2rem;
+}
+
+.c-tour-year {
+  text-align: center;
 }
 
 .c-tour-info {
   margin-top: 1rem;
 }
 
-.c-tour-items {
-  margin-top: 1rem;
-}
-
 .c-tour-item-wrapper {
+  border-radius: 5px;
+  padding: 0.3rem 2rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: 0.3s ease-in-out;
 }
 
-.c-tour-item {
-  margin-top: 0.8rem;
+.c-tour-item-wrapper:hover {
+  background-color: #eeecec;
 }
 
 .c-tour-items-wrapper {

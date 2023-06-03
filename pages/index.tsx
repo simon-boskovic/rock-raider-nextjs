@@ -98,8 +98,8 @@ export async function getStaticProps() {
 
     const todayDate = new Date(currentDateWithoutTimezone).getTime();
 
-    for (const month in tourDataJson) {
-      for (const show of tourDataJson[month]) {
+    for (const month in tourDataJson[year]) {
+      for (const show of tourDataJson[year][month]) {
         const [day, monthStr, year] = show.date.split(".");
         const showDate = new Date(year, monthStr - 1, day).getTime();
         if (showDate >= todayDate) {

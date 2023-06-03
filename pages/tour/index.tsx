@@ -24,41 +24,50 @@ export default function TourPage(props) {
             </span>
           </div>
         </div>
-        {tour.map((tourItem, index) => (
-          <div key={index} className={styles["c-tour-items-wrapper"]}>
-            <div>
-              <div className={styles["c-tour-month"]}>
-                <h3>{tourItem.month}</h3>
-              </div>
-              <div className={styles["c-tour-items"]}>
-                {!!tourItem.events?.length &&
-                  tourItem.events.map((event, eventIndex) => (
-                    <div
-                      key={eventIndex}
-                      className={styles["c-tour-item-wrapper"]}
-                    >
-                      <div className={styles["c-tour-item"]}>
-                        <strong>{`${event.day} ${event.date} ${event.place}`}</strong>
-                        <div>
-                          <span>{`${event.description}`}</span>
+
+        {Object.keys(tour).map((year) => {
+          return tour[year].map((tourItem, index) => (
+            <div key={index} className={styles["c-tour-items-wrapper"]}>
+              <div>
+                {tourItem.month === "Leden" && (
+                  <div className={styles["c-tour-year"]}>
+                    <h2>{year}</h2>
+                  </div>
+                )}
+
+                <div className={styles["c-tour-month"]}>
+                  <h3>{tourItem.month}</h3>
+                </div>
+                <div className={styles["c-tour-items"]}>
+                  {!!tourItem.events?.length &&
+                    tourItem.events.map((event, eventIndex) => (
+                      <div
+                        key={eventIndex}
+                        className={styles["c-tour-item-wrapper"]}
+                      >
+                        <div className={styles["c-tour-item"]}>
+                          <strong>{`${event.day} ${event.date} ${event.place}`}</strong>
+                          <div>
+                            <span>{`${event.description}`}</span>
+                          </div>
                         </div>
+                        {event?.link && (
+                          <Image
+                            onClick={() => window.open(event.link, "_blank")}
+                            src={facebookIconpath}
+                            style={{ cursor: "pointer" }}
+                            height={20}
+                            width={20}
+                            alt="Facebook link"
+                          />
+                        )}
                       </div>
-                      {event?.link && (
-                        <Image
-                          onClick={() => window.open(event.link, "_blank")}
-                          src={facebookIconpath}
-                          style={{ cursor: "pointer" }}
-                          height={20}
-                          width={20}
-                          alt="Facebook link"
-                        />
-                      )}
-                    </div>
-                  ))}
+                    ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ));
+        })}
       </section>
     </>
   );
@@ -86,22 +95,27 @@ export async function getStaticProps() {
     "tour-data.json"
   );
   const file = JSON.parse(await fs.readFile(pathToTours, "utf-8"));
+  const date = new Date();
+  const currentMonthIndex = date.getMonth();
 
-  const currentMonthIndex = new Date().getMonth();
-
-  const tmpArray: any[] = [];
-  Object.keys(file).forEach((monthIndex, index) => {
-    if (+monthIndex >= +currentMonthIndex) {
-      tmpArray.push({
-        month: translatedMonths[monthIndex],
-        events: file[monthIndex],
-      });
-    }
+  const result = {};
+  Object.keys(file).forEach((year) => {
+    result[year] = [];
+    Object.keys(file[year]).forEach((monthIndex) => {
+      if (
+        +monthIndex >= +currentMonthIndex ||
+        file[year] !== date.getFullYear()
+      ) {
+        result[year].push({
+          month: translatedMonths[monthIndex],
+          events: file[year][monthIndex],
+        });
+      }
+    });
   });
-
   return {
     props: {
-      tour: tmpArray,
+      tour: result,
     },
   };
 }
