@@ -46,7 +46,7 @@ export default function Info(props) {
                 data-aos-offset="-100"
                 onClick={() =>
                   window.open(
-                    "https://www.facebook.com/rockraider.zlin",
+                    "https://www.facebook.com/profile.php?id=100092427560577",
                     "_blank"
                   )
                 }
