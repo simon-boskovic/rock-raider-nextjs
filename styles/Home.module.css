@@ -97,6 +97,12 @@
 
 .c-band-logo {
   width: 100%;
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.c-band-logo--loaded {
+  opacity: 1 !important;
 }
 
 @media (min-width: 768px) {
@@ -170,4 +176,11 @@
   max-width: 900px;
   aspect-ratio: 70/45;
   margin: 2rem auto;
+  background-size: cover;
+  background-position: cover;
+
+  background: white;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

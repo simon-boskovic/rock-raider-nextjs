@@ -9,6 +9,7 @@ import fs from "fs/promises";
 import path from "path";
 import Videos from "@components/homepage/videos";
 import HomepageImages from "@components/homepage/homepage-images";
+import getFileStructure from "@components/ffmpeg";
 
 export default function Homepage(props) {
   const {
@@ -23,6 +24,7 @@ export default function Homepage(props) {
         <title>Hudební skupina Raider Rock </title>
         <meta name="description" content="Hudební skupina Raider Rock" />
       </Head>
+
       <section className={styles["c-image-swiper"]} id="section1">
         <ImageSwiper swiperImagePaths={swiperImagePaths}></ImageSwiper>
       </section>
@@ -53,24 +55,11 @@ export default function Homepage(props) {
 export async function getStaticProps() {
   const tourDataPath = path.join(process.cwd(), "data", "tour-data.json");
 
-  const swiperImagesPath = path.join(
-    process.cwd(),
-    "public",
-    "images",
-    "homepage",
-    "swiper"
-  );
+  const swiperImagesPath = path.join("public", "images", "homepage", "swiper");
 
-  const socialNetworkLinks = path.join(
-    process.cwd(),
-    "public",
-    "images",
-    "homepage",
-    "links"
-  );
+  const socialNetworkLinks = path.join("public", "images", "homepage", "links");
 
   const lightboxImagesPath = path.join(
-    process.cwd(),
     "public",
     "images",
     "homepage",
@@ -81,7 +70,7 @@ export async function getStaticProps() {
 
   const resolvedNetworkPaths = await fs.readdir(socialNetworkLinks);
 
-  const resolvedImagesPaths = await fs.readdir(swiperImagesPath);
+  const resolvedImagesPaths = await getFileStructure(swiperImagesPath);
 
   const tourDataJson = await fs
     .readFile(tourDataPath, "utf-8")
@@ -115,9 +104,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      swiperImagePaths: resolvedImagesPaths.map(
-        (res) => `/images/homepage/swiper/${res}`
-      ),
+      swiperImagePaths: resolvedImagesPaths,
       networkImagesPaths: resolvedNetworkPaths.map(
         (res) => `/images/homepage/links/${res}`
       ),
