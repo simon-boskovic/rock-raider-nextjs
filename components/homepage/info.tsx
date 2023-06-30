@@ -24,12 +24,7 @@ export default function Info(props) {
           <strong>al.cala@seznam.cz</strong>
         </div>
       </div>
-      <div className={styles["c-info-downloads"]}>
-        <h3 className={styles["c-info-header"]} data-aos="fade-left">
-          Ke stažení
-        </h3>
-        {/* <div>NO CONTENT YET</div> */}
-      </div>
+
       <div className={styles["c-info-follow-us"]}>
         <h3
           className={styles["c-info-header"]}

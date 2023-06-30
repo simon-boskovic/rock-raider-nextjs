@@ -18,7 +18,7 @@
 .c-info-follow-us-images {
   display: grid;
   grid-gap: 0.8rem;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   margin: auto;
   width: 6.6rem;
 }
@@ -43,7 +43,7 @@
   .c-info-main-wrapper {
     display: grid;
     gap: 6.4rem;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin: auto;
     max-width: 96rem;
     position: relative;
