@@ -11,7 +11,7 @@ export default function ImageList(props) {
   return (
     <div>
       <ul className={styles["image-gallery"]}>
-        {imageLinks?.map((imageSrc, index) => (
+        {imageLinks?.map((image, index) => (
           <li key={index}>
             <Image
               loading="lazy"
@@ -20,7 +20,7 @@ export default function ImageList(props) {
                 setImageIndex(index);
                 setToggler(!toggler);
               }}
-              src={imageSrc}
+              src={image.image}
               width={350}
               height={200}
               alt="Image"
@@ -32,7 +32,7 @@ export default function ImageList(props) {
       <FsLightbox
         toggler={toggler}
         sourceIndex={imageIndex}
-        sources={imageLinks}
+        sources={imageLinks.map((res) => res.image)}
       />
     </div>
   );

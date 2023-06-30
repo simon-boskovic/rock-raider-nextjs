@@ -26,7 +26,7 @@ export default function BandMembers() {
     {
       image: `/images/homepage/band-members/petr_zavodsky.webp`,
       name: "Petr Závodský",
-      role: "zvuk",
+      role: "zvuk, zpěv",
     },
     {
       image: `/images/homepage/band-members/kamila_dupalova.webp`,

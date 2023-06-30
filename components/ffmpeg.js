@@ -1,50 +1,106 @@
-import fs from "fs/promises";
-import Path from "path";
 import { exec } from "child_process";
+import fs from "fs";
+import fsp from "fs/promises";
+import Path from "path";
 
-export default async function getFileStructure(path) {
-  const compressedFilesDir = `${path}/compressed`;
+export default async function getFileStructure(absolutePath, relativePath) {
+  const compressedDir = `${absolutePath}/compressed`;
+  const placeholderFilesDir = compressedDir + "/placeholders";
+  const imagesFilesDir = compressedDir + "/images";
 
-  return checkFileExists(compressedFilesDir)
-    .then((dirExist) => {
-      if (!dirExist) {
-        return fs.mkdir(compressedFilesDir);
+  return checkDirectoryExists(compressedDir)
+    .then((dirExists) => {
+      if (!dirExists) {
+        return fsp.mkdir(compressedDir).then(async () => {
+          return Promise.all([
+            checkDirectoryExists(placeholderFilesDir).then(
+              (placeholderDirExists) => {
+                if (!placeholderDirExists) {
+                  return fsp.mkdir(placeholderFilesDir);
+                }
+              }
+            ),
+            checkDirectoryExists(imagesFilesDir).then((imagesDirExists) => {
+              if (!imagesDirExists) {
+                return fsp.mkdir(imagesFilesDir);
+              }
+            }),
+          ]);
+        });
       }
       return true;
     })
-    .then(() => fs.readdir(path, { withFileTypes: true }))
+    .then(() => fsp.readdir(absolutePath, { withFileTypes: true }))
     .then((files) =>
       files.filter((file) => file.isFile()).map((file) => file.name)
     )
     .then((files) =>
       Promise.all(
         files.map((file) => {
-          const pathToFile = `${path}/${file}`;
-          const smallFileName = `${
+          const pathToFile = `${absolutePath}/${file}`;
+          const placeholderFileName = `${
             Path.parse(pathToFile).name
           }-ffmpeg-small.webp`;
+          const imageFileName = `${Path.parse(pathToFile).name}.webp`;
 
-          const smallFilePath = `${compressedFilesDir}/${smallFileName}`;
-          return checkFileExists(smallFilePath).then((fileAlreadyExists) => {
-            if (!fileAlreadyExists) {
-              exec(`ffmpeg -i ${pathToFile} -vf scale=20:-1 ${smallFilePath}`);
+          const placeholderFilePath = `${placeholderFilesDir}/${placeholderFileName}`;
+          const imageFilePath = `${imagesFilesDir}/${imageFileName}`;
+          return checkFileExists(placeholderFilePath).then(
+            async (placeholderExists) => {
+              if (!placeholderExists) {
+                await convertToWebP(
+                  pathToFile,
+                  placeholderFilePath,
+                  "20:-1",
+                  10
+                );
+              }
+              return checkFileExists(imageFilePath).then(
+                async (imageExists) => {
+                  if (!imageExists) {
+                    await convertToWebP(
+                      pathToFile,
+                      imageFilePath,
+                      "800:-1",
+                      80
+                    );
+                  }
+                  return {
+                    image: `${relativePath}/compressed/images/${imageFileName}`,
+                    smallImage: `${relativePath}/compressed/placeholders/${placeholderFileName}`,
+                  };
+                }
+              );
             }
-
-            return {
-              image: pathToFile.replace("public\\", ""),
-              smallImage: smallFilePath
-                .replace("public\\", "")
-                .replaceAll("\\", "/"),
-            };
-          });
+          );
         })
       )
     );
 }
 
+function convertToWebP(inputFile, outputFile, scale, quality) {
+  return new Promise((resolve, reject) => {
+    const command = `ffmpeg -i ${inputFile} -vf "scale=${scale}:force_original_aspect_ratio=decrease" -c:v libwebp -quality ${quality} ${outputFile}`;
+    exec(command, (error) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
+    });
+  });
+}
+
 function checkFileExists(file) {
-  return fs
+  return fsp
     .access(file, fs.constants.F_OK)
+    .then(() => true)
+    .catch(() => false);
+}
+
+function checkDirectoryExists(directory) {
+  return fsp
+    .access(directory, fs.constants.F_OK)
     .then(() => true)
     .catch(() => false);
 }

@@ -107,7 +107,7 @@
 
 @media (min-width: 768px) {
   .c-main-wrapper {
-    width: 60%;
+    max-width: 1180px;
   }
 }
 @media (max-width: 768px) {

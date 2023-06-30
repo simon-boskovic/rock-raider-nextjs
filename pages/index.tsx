@@ -55,22 +55,23 @@ export default function Homepage(props) {
 export async function getStaticProps() {
   const tourDataPath = path.join(process.cwd(), "data", "tour-data.json");
 
-  const swiperImagesPath = path.join("public", "images", "homepage", "swiper");
+  const relativeImagesPath = "images/homepage/swiper";
 
   const socialNetworkLinks = path.join("public", "images", "homepage", "links");
 
-  const lightboxImagesPath = path.join(
-    "public",
-    "images",
-    "homepage",
-    "lightbox"
-  );
-
-  const resolvedLightboxPaths = await fs.readdir(lightboxImagesPath);
+  const relativeLightboxImagesPath = "images/homepage/lightbox";
 
   const resolvedNetworkPaths = await fs.readdir(socialNetworkLinks);
 
-  const resolvedImagesPaths = await getFileStructure(swiperImagesPath);
+  const resolvedImagesPaths = await getFileStructure(
+    process.cwd() + "/public/" + relativeImagesPath,
+    relativeImagesPath
+  );
+
+  const resolvedLightboxPaths = await getFileStructure(
+    process.cwd() + "/public/" + relativeLightboxImagesPath,
+    relativeLightboxImagesPath
+  );
 
   const tourDataJson = await fs
     .readFile(tourDataPath, "utf-8")
@@ -108,9 +109,12 @@ export async function getStaticProps() {
       networkImagesPaths: resolvedNetworkPaths.map(
         (res) => `/images/homepage/links/${res}`
       ),
-      resolvedLightboxPaths: resolvedLightboxPaths.map(
-        (res) => `/images/homepage/lightbox/${res}`
-      ),
+      resolvedLightboxPaths: resolvedLightboxPaths.sort((a, b) => {
+        const regex = /(\d+)/;
+        const aNumber = +a.image.match(regex)![0];
+        const bNumber = +b.image.match(regex)![0];
+        return aNumber - bNumber;
+      }),
       closestShows: closestShows,
     },
   };
