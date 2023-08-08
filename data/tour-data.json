@@ -54,6 +54,14 @@
         "description": "Pouťová zábava",
         "hasVacation": false,
         "link": ""
+      },
+      {
+        "date": "12.8.2023",
+        "day": "SO",
+        "place": "Želechovice (Paseky - Rumovka)",
+        "description": "Hudební a taneční večer",
+        "hasVacation": false,
+        "link": ""
       }
     ]
   },

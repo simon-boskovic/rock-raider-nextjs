@@ -2,13 +2,7 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
-import {
-  MutableRefObject,
-  RefObject,
-  SyntheticEvent,
-  useEffect,
-  useRef,
-} from "react";
+import { SyntheticEvent, useRef } from "react";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -20,7 +14,7 @@ import "swiper/css/zoom";
 export default function ImageSwiper(props) {
   const { swiperImagePaths } = props;
   const imageRef = useRef<HTMLImageElement>(null);
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperRef>(null);
   let autoplayAlreadySet = false;
 
   const onImageLoad = (ev: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -29,7 +23,7 @@ export default function ImageSwiper(props) {
 
   const onFirstImageLoad = () => {
     if (!autoplayAlreadySet) {
-      swiperRef.current.swiper.autoplay.start();
+      swiperRef.current!.swiper.autoplay.start();
       autoplayAlreadySet = true;
     }
   };
