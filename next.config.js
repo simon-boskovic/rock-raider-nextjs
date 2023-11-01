@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    output: "export",
     unoptimized: true,
   },
 };

@@ -11,21 +11,25 @@ export default function UpcommingConcerts(props) {
         Budoucí koncerty
       </h2>
       <span className={styles["c-soonest-dates"]}>
-        {closestShows.map((show, index) => (
-          <div key={index} className={styles["c-soonest-date"]}>
-            <strong>{show.day + " " + show.date + " " + show.place}</strong>
-            {show?.link && (
-              <Image
-                onClick={() => window.open(show?.link, "_blank")}
-                src={facebookIconpath}
-                style={{ cursor: "pointer" }}
-                height={20}
-                width={20}
-                alt="Facebook link"
-              />
-            )}
-          </div>
-        ))}
+        {closestShows?.length ? (
+          closestShows.map((show, index) => (
+            <div key={index} className={styles["c-soonest-date"]}>
+              <strong>{show.day + " " + show.date + " " + show.place}</strong>
+              {show?.link && (
+                <Image
+                  onClick={() => window.open(show?.link, "_blank")}
+                  src={facebookIconpath}
+                  style={{ cursor: "pointer" }}
+                  height={20}
+                  width={20}
+                  alt="Facebook link"
+                />
+              )}
+            </div>
+          ))
+        ) : (
+          <h3>V nejbližší době nejsou žádné koncerty</h3>
+        )}
         <div className={styles["c-all-concert-btn-wrapper"]}>
           <Link href="/tour">
             <button className={styles["c-all-concert-btn"]}>

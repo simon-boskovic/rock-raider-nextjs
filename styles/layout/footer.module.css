@@ -1,6 +1,8 @@
 .c-footer {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
   margin-top: 5rem;
   width: 100%;
   text-align: center;
-  padding: 2rem 0;
 }
