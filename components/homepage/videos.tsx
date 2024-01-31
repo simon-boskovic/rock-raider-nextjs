@@ -1,7 +1,7 @@
 import styles from "@/styles/Home.module.css";
 
 export default function Videos() {
-  const videoPath1 = "videos/video1.mp4";
+  const videoPath1 = "videos/video1.MOV";
   return (
     <div className={styles["c-section-margin-top"]}>
       <h2 id="about" data-aos="fade-down">

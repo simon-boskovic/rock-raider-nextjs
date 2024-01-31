@@ -28,11 +28,6 @@ export default function BandMembers() {
       name: "Petr Závodský",
       role: "zvuk, zpěv",
     },
-    {
-      image: `/images/homepage/band-members/kamila_dupalova.webp`,
-      name: "Kamila Dupalová",
-      role: "zpěv",
-    },
   ];
 
   return (

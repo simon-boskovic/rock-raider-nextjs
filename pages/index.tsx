@@ -22,7 +22,16 @@ export default function Homepage(props) {
     <>
       <Head>
         <title>Hudební skupina Raider Rock </title>
-        <meta name="description" content="Hudební skupina Raider Rock" />
+        <meta
+          name="description"
+          content="Raider Rock - Skupina, která oživí vaše zábavy energickým mixem rockových hitů a nezapomenutelnou atmosférou!"
+        />
+        <meta
+          name="keywords"
+          content="Raider Rock, zábavová skupina, hudební skupina, rockové hity, zábavy, koncerty"
+        />
+        <meta name="author" content="Šimon Boškovič"></meta>
+        <meta name="robots" content="index, follow" />
       </Head>
 
       <section className={styles["c-image-swiper"]} id="section1">

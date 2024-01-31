@@ -1,71 +1,68 @@
 {
-  "2023": {
+  "2024": {
+    "1": [
+      {
+        "date": "10.2.2024",
+        "day": "SO",
+        "place": "Trnava",
+        "description": "Končinová zábava",
+        "hasVacation": false,
+        "link": ""
+      },
+      {
+        "date": "17.2.2024",
+        "day": "SO",
+        "place": "Želechovice (Paseky)",
+        "description": "Maškarní ples",
+        "hasVacation": false,
+        "link": ""
+      }
+    ],
     "4": [
       {
-        "date": "27.5.2023",
+        "date": "4.5.2024",
         "day": "SO",
-        "place": "Pozlovice",
-        "description": "Kácení máje",
+        "place": "Veselá",
+        "description": "Soukromá akce",
+        "hasVacation": false,
+        "link": ""
+      },
+      {
+        "date": "25.5.2024",
+        "day": "SO",
+        "place": "Želechovice (Paseky)",
+        "description": "Soukromá akce",
         "hasVacation": false,
         "link": ""
       }
     ],
     "5": [
       {
-        "date": "3.6.2023",
+        "date": "8.6.2024",
         "day": "SO",
-        "place": "Šelešovice",
-        "description": "Zábava",
+        "place": "Neubuz",
+        "description": "Soukromá akce",
         "hasVacation": false,
         "link": ""
       },
       {
-        "date": "10.6.2023",
-        "day": "SO",
-        "place": "Malenovice",
-        "description": "Pivní slavnosti",
-        "hasVacation": false,
-        "link": ""
-      },
-      {
-        "date": "24.6.2023",
+        "date": "29.6.2024",
         "day": "SO",
         "place": "Březová",
-        "description": "Tour de beer",
+        "description": "Tour de Beer",
         "hasVacation": false,
         "link": ""
       }
     ],
     "6": [
       {
-        "date": "15.7.2023",
+        "date": "20.7.2024",
         "day": "SO",
-        "place": "Jablůnka",
-        "description": "Hasičská zábava",
-        "hasVacation": false,
-        "link": ""
-      }
-    ],
-    "7": [
-      {
-        "date": "5.8.2023",
-        "day": "SO",
-        "place": "Zděchov",
+        "place": "Hutisko-Solanec",
         "description": "Pouťová zábava",
-        "hasVacation": false,
-        "link": ""
-      },
-      {
-        "date": "12.8.2023",
-        "day": "SO",
-        "place": "Želechovice (Paseky - Rumovka)",
-        "description": "Hudební a taneční večer",
         "hasVacation": false,
         "link": ""
       }
     ]
-  },
-  "2024": {
-    "0": []
   }
 }
