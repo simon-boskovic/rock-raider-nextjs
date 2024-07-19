@@ -20,10 +20,10 @@
     ],
     "4": [
       {
-        "date": "4.5.2024",
-        "day": "SO",
-        "place": "Veselá",
-        "description": "Soukromá akce",
+        "date": "3.5.2024",
+        "day": "PA",
+        "place": "Neubuz",
+        "description": "Pouťová zábava",
         "hasVacation": false,
         "link": ""
       },
@@ -45,6 +45,7 @@
         "hasVacation": false,
         "link": ""
       },
+
       {
         "date": "29.6.2024",
         "day": "SO",
@@ -55,6 +56,14 @@
       }
     ],
     "6": [
+      {
+        "date": "13.7.2024",
+        "day": "SO",
+        "place": "Jablůnka",
+        "description": "Hasičská zábava",
+        "hasVacation": false,
+        "link": ""
+      },
       {
         "date": "20.7.2024",
         "day": "SO",

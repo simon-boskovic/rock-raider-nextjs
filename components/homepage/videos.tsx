@@ -8,7 +8,21 @@ export default function Videos() {
         Videa
       </h2>
       <div className={styles["c-section-videos-wrapper"]}>
-        <video controls loop style={{ width: "100%" }} data-aos="fade-down">
+        <div
+          className={styles["c-video-container"]}
+          data-aos="fade-down"
+          data-aos-delay="150"
+        >
+          <iframe src="https://www.youtube.com/embed/Fu7Y-FW2op0"></iframe>
+        </div>
+
+        <video
+          controls
+          loop
+          style={{ width: "100%" }}
+          data-aos="fade-down"
+          data-aos-delay="200"
+        >
           <source src={videoPath1} />
         </video>
       </div>

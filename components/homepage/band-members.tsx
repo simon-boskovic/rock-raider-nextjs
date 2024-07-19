@@ -28,6 +28,11 @@ export default function BandMembers() {
       name: "Petr Závodský",
       role: "zvuk, zpěv",
     },
+    {
+      image: `/images/homepage/band-members/majka_ria_novakova.webp`,
+      name: "Majka Ria Nováková ",
+      role: "zpěv",
+    },
   ];
 
   return (
