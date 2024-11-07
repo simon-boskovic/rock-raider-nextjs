@@ -25,49 +25,46 @@ export default function TourPage(props) {
           </div>
         </div>
 
-        {Object.keys(tour).map((year) => {
-          return tour[year].map((tourItem, index) => (
-            <div key={index} className={styles["c-tour-items-wrapper"]}>
-              <div>
-                {tourItem.month === "Leden" && (
-                  <div className={styles["c-tour-year"]}>
-                    <h2>{year}</h2>
+        {Object.keys(tour).map((year) => (
+          <div key={year} className={styles["c-tour-year"]}>
+            <h2>{year}</h2>
+            {tour[year].map((tourItem, index) => (
+              <div key={index} className={styles["c-tour-items-wrapper"]}>
+                <div>
+                  <div className={styles["c-tour-month"]}>
+                    <h3>{tourItem.month}</h3>
                   </div>
-                )}
-
-                <div className={styles["c-tour-month"]}>
-                  <h3>{tourItem.month}</h3>
-                </div>
-                <div className={styles["c-tour-items"]}>
-                  {!!tourItem.events?.length &&
-                    tourItem.events.map((event, eventIndex) => (
-                      <div
-                        key={eventIndex}
-                        className={styles["c-tour-item-wrapper"]}
-                      >
-                        <div className={styles["c-tour-item"]}>
-                          <strong>{`${event.day} ${event.date} ${event.place}`}</strong>
-                          <div>
-                            <span>{`${event.description}`}</span>
+                  <div className={styles["c-tour-items"]}>
+                    {!!tourItem.events?.length &&
+                      tourItem.events.map((event, eventIndex) => (
+                        <div
+                          key={eventIndex}
+                          className={styles["c-tour-item-wrapper"]}
+                        >
+                          <div className={styles["c-tour-item"]}>
+                            <strong>{`${event.day} ${event.date} ${event.place}`}</strong>
+                            <div>
+                              <span>{`${event.description}`}</span>
+                            </div>
                           </div>
+                          {event?.link && (
+                            <Image
+                              onClick={() => window.open(event.link, "_blank")}
+                              src={facebookIconpath}
+                              style={{ cursor: "pointer" }}
+                              height={20}
+                              width={20}
+                              alt="Facebook link"
+                            />
+                          )}
                         </div>
-                        {event?.link && (
-                          <Image
-                            onClick={() => window.open(event.link, "_blank")}
-                            src={facebookIconpath}
-                            style={{ cursor: "pointer" }}
-                            height={20}
-                            width={20}
-                            alt="Facebook link"
-                          />
-                        )}
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ));
-        })}
+            ))}
+          </div>
+        ))}
       </section>
     </>
   );

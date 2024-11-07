@@ -88,24 +88,33 @@ export async function getStaticProps() {
 
   const getClosesTourShows = (): any[] => {
     const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1; // add 1 to the month because it is zero-indexed
+    const currentYear = currentDate.getFullYear();
+    const nextYear = currentYear + 1;
+    const month = currentDate.getMonth() + 1;
     const day = currentDate.getDate();
-    const currentDateWithoutTimezone = `${year}-${month}-${day}`;
+    const currentDateWithoutTimezone = `${currentYear}-${month}-${day}`;
 
     const upcomingShows: any = [];
 
     const todayDate = new Date(currentDateWithoutTimezone).getTime();
 
-    for (const month in tourDataJson[year]) {
-      for (const show of tourDataJson[year][month]) {
-        const [day, monthStr, year] = show.date.split(".");
-        const showDate = new Date(year, monthStr - 1, day).getTime();
-        if (showDate >= todayDate) {
-          upcomingShows.push({ date: showDate, ...show });
+    const processYearData = (year: number) => {
+      if (tourDataJson[year]) {
+        for (const month in tourDataJson[year]) {
+          for (const show of tourDataJson[year][month]) {
+            const [day, monthStr, yearStr] = show.date.split(".");
+            const showDate = new Date(yearStr, monthStr - 1, day).getTime();
+            if (showDate >= todayDate) {
+              upcomingShows.push({ date: showDate, ...show });
+            }
+          }
         }
       }
-    }
+    };
+
+    processYearData(currentYear);
+    processYearData(nextYear);
+
     upcomingShows.sort((a, b) => a.date - b.date);
     return upcomingShows.slice(0, 4);
   };

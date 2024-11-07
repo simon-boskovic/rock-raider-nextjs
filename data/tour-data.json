@@ -72,6 +72,56 @@
         "hasVacation": false,
         "link": ""
       }
+    ],
+    "9": [
+      {
+        "date": "26.10.2024",
+        "day": "SO",
+        "place": "Veselá",
+        "description": "Hodová zábava",
+        "hasVacation": false,
+        "link": ""
+      }
+    ],
+    "11": [
+      {
+        "date": "26.12.2024",
+        "day": "ČT",
+        "place": "Neubuz",
+        "description": "Štěpánská zábava",
+        "hasVacation": false,
+        "link": ""
+      }
+    ]
+  },
+  "2025": {
+    "1": [
+      {
+        "date": "8.2.2025",
+        "day": "SO",
+        "place": "Veselá",
+        "description": "Ples Hasiči",
+        "hasVacation": false,
+        "link": ""
+      },
+      {
+        "date": "15.2.2025",
+        "day": "SO",
+        "place": "Želechovice (Paseky)",
+        "description": "Maškarní ples",
+        "hasVacation": false,
+        "link": ""
+      }
+    ],
+    "6": [
+      {
+        "date": "26.7.2025",
+        "day": "SO",
+        "place": "Říkovice",
+        "description": "Pouťová zábava",
+        "hasVacation": false,
+        "link": ""
+      }
     ]
   }
 }
